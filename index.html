@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skb.</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+<header>
+    <div class="container header__container">
+        <div class="logo">
+            <a href="index.html" class="logo__link">
+                <span class="logo__text">skb.</span>
+            </a>
+        </div>
+        <div class="search">
+            <input type="text" class="search__input" placeholder="Введите запрос">
+        </div>
+    </div>
+</header>
+<main>
+    <div class="container main__container">
+        <h1 class="main__title">Клиенты</h1>
+        <table class="main__table" id="table">
+            <thead class="main__thead">
+                <tr>
+                    <th class="main__th default">ID <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                    </svg></th>
+                    <th class="main__th">Фамилия Имя Отчество <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="th__svg">
+                        <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                    </svg> <span>А-Я</span></th>
+                    <th class="main__th">Дата и время создания <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="th__svg">
+                        <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                    </svg></th>
+                    <th class="main__th">Последние изменения <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="th__svg">
+                        <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                    </svg></th>
+                    <th>Контакты </th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="tbody" class="main__body"></tbody>
+        </table>
+
+        <button class="main__btn" id="btnAdd">
+            <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z" fill="#9873FF"/>
+            </svg>
+            Добавить клиента
+        </button>
+        <div id="modal" class="modal">
+            <div class="modal__bg"></div>
+            <div class="modal__content">
+                <div class="modal-top">
+                    <h3 class="modal__title">Новый клиент</h3>
+                    <span class="modal__close" id="close"></span>
+                </div>
+                <div class="modal__body">
+                    <form action="submit">
+                        <input type="text" id="new-surname" placeholder="Фамилия*" required class="modal__input">
+                        <br>
+                        <input type="text" id="new-name" placeholder="Имя*" required class="modal__input">
+                        <br>
+                        <input type="text" id="new-fatherName" placeholder="Отчество" class="modal__input">
+                    </form>
+                    <div class="select" id="select">
+                        <select name="select" required class="select__list">
+                            <option value="tel" selected class="select__item">Телефон</option>
+                            <option value="tel-extra" class="select__item">Доп. телефон</option>
+                            <option value="email" class="select__item">Email</option>
+                            <option value="vk" class="select__item">Vk</option>
+                            <option value="facebook" class="select__item">Facebook</option>
+                        </select>
+                        <input type="text" id="new-contact" placeholder="Введите данные контакта" required class="select__input">
+                    </div>
+                    <button class="modal__btn" id="btn-contact"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.99998 4.66683C7.63331 4.66683 7.33331 4.96683 7.33331 5.3335V7.3335H5.33331C4.96665 7.3335 4.66665 7.6335 4.66665 8.00016C4.66665 8.36683 4.96665 8.66683 5.33331 8.66683H7.33331V10.6668C7.33331 11.0335 7.63331 11.3335 7.99998 11.3335C8.36665 11.3335 8.66665 11.0335 8.66665 10.6668V8.66683H10.6666C11.0333 8.66683 11.3333 8.36683 11.3333 8.00016C11.3333 7.6335 11.0333 7.3335 10.6666 7.3335H8.66665V5.3335C8.66665 4.96683 8.36665 4.66683 7.99998 4.66683ZM7.99998 1.3335C4.31998 1.3335 1.33331 4.32016 1.33331 8.00016C1.33331 11.6802 4.31998 14.6668 7.99998 14.6668C11.68 14.6668 14.6666 11.6802 14.6666 8.00016C14.6666 4.32016 11.68 1.3335 7.99998 1.3335ZM7.99998 13.3335C5.05998 13.3335 2.66665 10.9402 2.66665 8.00016C2.66665 5.06016 5.05998 2.66683 7.99998 2.66683C10.94 2.66683 13.3333 5.06016 13.3333 8.00016C13.3333 10.9402 10.94 13.3335 7.99998 13.3335Z" fill="#9873FF"/>
+                    </svg>Добавить контакт</button>
+
+                    <button class="modal__save" id="save" onclick="addClient()">Сохранить</button>
+                    <a class="modal__cancel" id="cancel">Отмена</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-delete" class="delete">
+            <div class="delete__bg"></div>
+            <div class="delete__content">
+                <div class="delete-top">
+                    <h3 class="delete__title">Удалить клиента</h3>
+                    <span class="delete__close" id="delete_close"></span>
+                </div>
+                <p class="delete__text">Вы действительно хотите удалить <br>данного клиента?</p>
+                <button class="delete__btn">Удалить</button>
+                <a class="delete__cancel" id="cancelDel">Отмена</a>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
